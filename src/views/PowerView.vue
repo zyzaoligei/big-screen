@@ -5,7 +5,9 @@
     <div class="left-top">
       <pie-charts :echartDatas="chargingPile"/>
     </div>
-    <div class="left-bottom"></div>
+    <div class="left-bottom">
+      <line-charts :echartDatas="processMonitoring"/>
+    </div>
     
     <div class="right-bottom"></div>
     <div class="right-top"></div>
@@ -19,17 +21,26 @@
 
 <script setup>
   import {ref} from "vue";
-  import { getPowerScreenData } from '../servies/index.js'
+  // 引入组件
   import PieCharts from '../components/pie-charts.vue'
+  import LineCharts from '../components/line-charts.vue'
+  // 引入网络请求函数
+  import { getPowerScreenData } from '../servies/index.js'
   // 默认数据项
-  import { chargingPileData } from './config/home-data.js'
+  import { 
+    chargingPileData,
+    processMonitoringData,
+  } from './config/home-data.js'
   
   // 充电桩数据：将数据放置到ref中，变成响应式数据
   let chargingPile = ref(chargingPileData)
+  // 流程监控数据
+  let processMonitoring = ref(processMonitoringData)
   
   // 网络请求数据,使用then异步加载数据
   getPowerScreenData().then(res => {
     chargingPile.value = res.data.chargingPile.data
+    processMonitoring.value = res.data.processMonitoring.data
   })
   
 </script>
