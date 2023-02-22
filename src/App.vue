@@ -1,13 +1,5 @@
 <template>
-<!--  <router-view></router-view>-->
-  <ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
-    <li>5</li>
-    <li>6</li>
-  </ul>
+  <router-view></router-view>
 </template>
 
 <script setup>
@@ -23,16 +15,4 @@
 </script>
 
 <style scoped>
-ul {
-  width: 1920px;
-  height: 1080px;
-  display: flex;
-  flex-wrap: wrap;
-}
-ul > li {
-  box-sizing: border-box;
-  width: 33.33%;
-  height: 50%;
-  border: 4px solid red;
-}
 </style>
